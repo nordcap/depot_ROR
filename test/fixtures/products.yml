@@ -1,5 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   title: MyString
   description: MyText
@@ -11,3 +10,21 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+notebook:
+   title: Ноутбук DELL
+   description: DELL is best notebook
+   price: 30000
+   image_url: notebook.png
+
+monitor:
+   title: Монитор SAMSUNG
+   description: SAMSUNG is best notebook
+   price: 10000
+   image_url: monitor.png
+
+router:
+   title: Роутер D-LINK
+   description: Роутер с скоростью 100 мб
+   price: 2000
+   image_url: router.png
