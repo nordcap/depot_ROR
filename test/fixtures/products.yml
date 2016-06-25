@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
-  title: MyString
+  title: MyStri
   description: MyText
   image_url: MyString
   price: 9.99

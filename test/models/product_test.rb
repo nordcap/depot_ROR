@@ -19,14 +19,14 @@ class ProductTest < ActiveSupport::TestCase
         description: "Какое то описание товара",
         image_url: "zzz.jpg"
     )
-    product.price=-1
+    product.price = -1
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
-                 product.errors[:price]
+    assert_equal ["must be greater than or equal to 0.01"], product.errors[:price]
+
     product.price = 0
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
-                 product.errors[:price]
+    assert_equal ["must be greater than or equal to 0.01"], product.errors[:price]
+
     product.price = 1
     assert product.valid?
   end
@@ -60,14 +60,32 @@ class ProductTest < ActiveSupport::TestCase
   test "product is not valid without a unique title" do
     #Если у товора нет уникального названия то он недопустим
     product = Product.new(
-                         title:products(:notebook).title,
-                         description: products(:notebook).description,
-                         price: products(:notebook).price,
-                         image_url: products(:notebook).image_url
+        title: products(:notebook).title,
+        description: products(:notebook).description,
+        price: products(:notebook).price,
+        image_url: products(:notebook).image_url
     )
     assert product.invalid?
     assert_equal ["has already been taken"], product.errors[:title]
     #уже было использовано
+  end
+
+
+  test "check length in title product" do
+    #если длина  названия товора меньше 10 то он недопустим
+    product = Product.new(
+        title: products(:one).title,
+        description: products(:one).description,
+        price: products(:one).price,
+        image_url: products(:one).image_url
+    )
+    assert product.invalid?
+    assert_equal ["is too short (minimum is 10 characters)"], product.errors[:title]
+
+
+    product.title = products(:notebook).title
+    assert product.valid?
+
   end
 
 end
