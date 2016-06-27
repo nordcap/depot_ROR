@@ -18,7 +18,7 @@ class CartsControllerTest < ActionController::TestCase
 
   test "should create cart" do
     assert_difference('Cart.count') do
-      post :create, cart: {  }
+      post :create, cart: {}
     end
 
     assert_redirected_to cart_path(assigns(:cart))
@@ -35,15 +35,16 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should update cart" do
-    patch :update, id: @cart, cart: {  }
+    patch :update, id: @cart, cart: {}
     assert_redirected_to cart_path(assigns(:cart))
   end
 
   test "should destroy cart" do
     assert_difference('Cart.count', -1) do
+      session[:cart_id] = @cart.id
       delete :destroy, id: @cart
     end
 
-    assert_redirected_to carts_path
+    assert_redirected_to store_index_path
   end
 end
