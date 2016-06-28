@@ -60,7 +60,7 @@ class CartsController < ApplicationController
     @cart.destroy if @cart.id == session[:cart_id] #удаляем только свою корзину
     session[:cart_id]=nil #удаляем сессионные данные корзина
     respond_to do |format|
-      format.html { redirect_to store_index_url, notice: 'Теперь ваша корзина пуста!' }
+      format.html { redirect_to store_index_url }
       format.json { head :no_content }
     end
   end
