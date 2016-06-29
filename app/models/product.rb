@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
 
   #связи
   has_many :line_items
+  has_many :orders, through: :line_items #опосредованная связь с таблицей заказов через таблицу товарных позиций
 
   before_destroy :ensure_not_referenced_by_any_line_item #подключаемый метод вызывается перед попыткой удалить строку в БД. Если возвр. false строка не будет удалена.
 
