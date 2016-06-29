@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil #вообще то в cart_controller эта строка уже есть!!!!
-
+        OrderNotifier.received(@order).deliver
 
         format.html { redirect_to store_index_url, notice: 'Спасибо за сделанный заказ' }
         format.json { render :show, status: :created, location: @order }

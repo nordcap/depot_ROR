@@ -16,6 +16,17 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      adress: "smtp.mail.ru",
+      port: 465,
+      domain: "alebu.ru",
+      authentication: "plain",
+      user_name: "budaevaa@mail.ru",
+      password: "d7f4f54bb40a95ce3e6efeba0f50367f",
+      enable_starttls_auto: true
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
