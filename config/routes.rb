@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'admin' => 'admin#index'
+
+
+  get 'login' => 'session#new'
+
+  post 'login' => 'session#create'
+
+  delete 'logout' => 'session#destroy'
+
+  resources :users
   resources :orders
   resources :line_items
   resources :carts
@@ -12,7 +22,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'store#index'
+  root 'store#index'
   #root 'store#index', as:'store'
 
   # Example of regular route:
